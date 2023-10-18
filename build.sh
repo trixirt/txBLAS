@@ -1,6 +1,6 @@
 #!/bin/sh
 
-S="init func lib mem roc gemm"
+S="init func lib mem roc symm gemm"
 for s in $S; do
     if [ -f ${s}.o ]; then
 	rm ${s}.o
