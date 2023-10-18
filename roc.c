@@ -1,5 +1,4 @@
-#include "internal/lib.h"
-#include <rocblas/rocblas.h>
+#include "internal/roc.h"
 
 extern rocblas_status (*f_rocblas_create_handle)(rocblas_handle *handle);
 rocblas_status rocblas_create_handle(rocblas_handle *handle) {

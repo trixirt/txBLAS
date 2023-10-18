@@ -8,30 +8,10 @@
 #include <stdint.h>
 
 /* libamdhip64 */
-void *hipExtMallocWithFlags = NULL;
 void *f_hipFree = NULL;
-void *hipFreeArray = NULL;
-void *hipFreeAsync = NULL;
-void *hipFreeHost = NULL;
-void *hipFreeMipmappedArray = NULL;
-void *hipGraphAddMemFreeNode = NULL;
-void *hipGraphMemFreeNodeGetParams = NULL;
-void *hipHostFree = NULL;
-void *hipHostMalloc = NULL;
 void *f_hipMalloc = NULL;
-void *hipMalloc3D = NULL;
-void *hipMalloc3DArray = NULL;
-void *hipMallocArray = NULL;
-void *hipMallocAsync = NULL;
-void *hipMallocFromPoolAsync = NULL;
-void *hipMallocHost = NULL;
-void *hipMallocManaged = NULL;
-void *hipMallocMipmappedArray = NULL;
-void *hipMallocPitch = NULL;
-void *hipMemAddressFree = NULL;
 void *f_hipMemcpy = NULL;
-void *hipMemcpy2D = NULL;
-void *hipMemcpy3D = NULL;
+void *f_hipMemset = NULL;
 
 /* librocblas */
 /* control */
@@ -194,32 +174,10 @@ void *rocblas_ztrsv = NULL;
 void func_init() {
   /* libamdhip64 */
 
-  hipExtMallocWithFlags = dlsym(__amdhip64_library, "hipExtMallocWithFlags");
   f_hipFree = dlsym(__amdhip64_library, "hipFree");
-  hipFreeArray = dlsym(__amdhip64_library, "hipFreeArray");
-  hipFreeAsync = dlsym(__amdhip64_library, "hipFreeAsync");
-  hipFreeHost = dlsym(__amdhip64_library, "hipFreeHost");
-  hipFreeMipmappedArray = dlsym(__amdhip64_library, "hipFreeMipmappedArray");
-  hipGraphAddMemFreeNode = dlsym(__amdhip64_library, "hipGraphAddMemFreeNode");
-  hipGraphMemFreeNodeGetParams =
-      dlsym(__amdhip64_library, "hipGraphMemFreeNodeGetParams");
-  hipHostFree = dlsym(__amdhip64_library, "hipHostFree");
-  hipHostMalloc = dlsym(__amdhip64_library, "hipHostMalloc");
   f_hipMalloc = dlsym(__amdhip64_library, "hipMalloc");
-  hipMalloc3D = dlsym(__amdhip64_library, "hipMalloc3D");
-  hipMalloc3DArray = dlsym(__amdhip64_library, "hipMalloc3DArray");
-  hipMallocArray = dlsym(__amdhip64_library, "hipMallocArray");
-  hipMallocAsync = dlsym(__amdhip64_library, "hipMallocAsync");
-  hipMallocFromPoolAsync = dlsym(__amdhip64_library, "hipMallocFromPoolAsync");
-  hipMallocHost = dlsym(__amdhip64_library, "hipMallocHost");
-  hipMallocManaged = dlsym(__amdhip64_library, "hipMallocManaged");
-  hipMallocMipmappedArray =
-      dlsym(__amdhip64_library, "hipMallocMipmappedArray");
-  hipMallocPitch = dlsym(__amdhip64_library, "hipMallocPitch");
-  hipMemAddressFree = dlsym(__amdhip64_library, "hipMemAddressFree");
   f_hipMemcpy = dlsym(__amdhip64_library, "hipMemcpy");
-  hipMemcpy2D = dlsym(__amdhip64_library, "hipMemcpy2D");
-  hipMemcpy3D = dlsym(__amdhip64_library, "hipMemcpy3D");
+  f_hipMemset = dlsym(__amdhip64_library, "hipMemset");
 
   /* librocblas */
   /* control */

@@ -1,19 +1,6 @@
 #!/bin/sh
-S="init func lib"
-O=
-for s in $S; do
-    if [ -f ${s}.o ]; then
-	rm ${s}.o
-    fi
-    clang-format -i ${s}.c
-    gcc -c -fPIC -O0 -g ${s}.c
-    if [ ! -f ${s}.o ]; then
-	exit
-    fi
-    O="$O ${s}.o"
-done
 
-S="mem roc gemm"
+S="init func lib mem roc gemm"
 for s in $S; do
     if [ -f ${s}.o ]; then
 	rm ${s}.o
@@ -26,5 +13,5 @@ for s in $S; do
     O="$O ${s}.o"
 done
 
-gcc -shared -o librblas.so $O
+gcc -shared -o librblas.so $O /usr/lib64/libcblas.a
 
