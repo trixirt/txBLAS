@@ -9,6 +9,7 @@
 #include <stddef.h>
 #include <stdint.h>
 #include <rocblas/rocblas.h>
+#include <cblas.h>
 
 /* interface */
 void roc_init();

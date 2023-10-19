@@ -1,6 +1,10 @@
+/*
+ * Copyright 2023 Tom Rix
+ *
+ * SPDX BSD-3-Clause
+ */
 #include "internal/mem.h"
 #include "internal/roc.h"
-#include "rblas.h"
 
 static int size_gemm(CBLAS_TRANSPOSE TransA, CBLAS_TRANSPOSE TransB,
                      const CBLAS_INT M, const CBLAS_INT N, const CBLAS_INT K,

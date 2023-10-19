@@ -1,6 +1,10 @@
+/*
+ * Copyright 2023 Tom Rix
+ *
+ * SPDX BSD-3-Clause
+ */
 #include "internal/mem.h"
 #include "internal/roc.h"
-#include <cblas.h>
 
 static int size_symm(CBLAS_SIDE Side, CBLAS_UPLO Uplo, const CBLAS_INT M,
                      const CBLAS_INT N, const CBLAS_INT lda,
