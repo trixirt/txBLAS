@@ -1,6 +1,6 @@
 #!/bin/sh
 
-S="init func lib mem roc trmm syr2k syrk symm gemm"
+S="init func lib mem roc trsm trmm syr2k syrk symm gemm"
 for s in $S; do
     if [ -f ${s}.o ]; then
 	rm ${s}.o
