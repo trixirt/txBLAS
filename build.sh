@@ -1,6 +1,6 @@
 #!/bin/sh
 
-S="init func lib mem roc symm gemm"
+S="init func lib mem roc trmm syr2k syrk symm gemm"
 for s in $S; do
     if [ -f ${s}.o ]; then
 	rm ${s}.o
@@ -13,5 +13,5 @@ for s in $S; do
     O="$O ${s}.o"
 done
 
-gcc -shared -o librblas.so $O /usr/lib64/libcblas.a
+gcc -shared -o libtxblas.so $O 
 
