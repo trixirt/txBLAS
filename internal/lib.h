@@ -13,7 +13,8 @@
 void lib_init();
 void lib_fini();
 
-extern void * __rocblas_library;
 extern void * __amdhip64_library;
+extern void * __cblas_library;
+extern void * __rocblas_library;
 
 #endif
