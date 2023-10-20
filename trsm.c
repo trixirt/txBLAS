@@ -221,7 +221,7 @@ void cblas_ctrsm(CBLAS_LAYOUT layout, CBLAS_SIDE Side, CBLAS_UPLO Uplo,
   else
     rocblas_ctrsm(__handle, (rocblas_side)Side, (rocblas_fill)Uplo,
                   (rocblas_operation)TransA, (rocblas_diagonal)Diag, N, M,
-                  &alpha, __A, lda, __B, ldb);
+                  alpha, __A, lda, __B, ldb);
 
   hipMemcpy(B, __B, 2 * sizeof(float) * size_b, hipMemcpyDeviceToHost);
 
@@ -291,7 +291,7 @@ void cblas_ztrsm(CBLAS_LAYOUT layout, CBLAS_SIDE Side, CBLAS_UPLO Uplo,
   else
     rocblas_ztrsm(__handle, (rocblas_side)Side, (rocblas_fill)Uplo,
                   (rocblas_operation)TransA, (rocblas_diagonal)Diag, N, M,
-                  &alpha, __A, lda, __B, ldb);
+                  alpha, __A, lda, __B, ldb);
 
   hipMemcpy(B, __B, 2 * sizeof(double) * size_b, hipMemcpyDeviceToHost);
 
