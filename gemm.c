@@ -41,7 +41,7 @@ rocblas_status rocblas_sgemm(rocblas_handle handle, rocblas_operation transA,
                              const float *A, rocblas_int lda, const float *B,
                              rocblas_int ldb, const float *beta, float *C,
                              rocblas_int ldc) {
-  if (f_rocblas_sgemm)
+  if (*f_rocblas_sgemm)
     return (*f_rocblas_sgemm)(handle, transA, transB, m, n, k, alpha, A, lda, B,
                               ldb, beta, C, ldc);
   return -1;
@@ -60,7 +60,7 @@ static void _cblas_sgemm(CBLAS_LAYOUT layout, CBLAS_TRANSPOSE TransA,
                          const float alpha, const float *A, const CBLAS_INT lda,
                          const float *B, const CBLAS_INT ldb, const float beta,
                          float *C, const CBLAS_INT ldc) {
-  if (f_cblas_sgemm)
+  if (*f_cblas_sgemm)
     (f_cblas_sgemm)(layout, TransA, TransB, M, N, K, alpha, A, lda, B, ldb,
                     beta, C, ldc);
 }
@@ -111,7 +111,7 @@ rocblas_status rocblas_dgemm(rocblas_handle handle, rocblas_operation transA,
                              const double *A, rocblas_int lda, const double *B,
                              rocblas_int ldb, const double *beta, double *C,
                              rocblas_int ldc) {
-  if (f_rocblas_dgemm)
+  if (*f_rocblas_dgemm)
     return (*f_rocblas_dgemm)(handle, transA, transB, m, n, k, alpha, A, lda, B,
                               ldb, beta, C, ldc);
   return -1;
@@ -131,7 +131,7 @@ static void _cblas_dgemm(CBLAS_LAYOUT layout, CBLAS_TRANSPOSE TransA,
                          const CBLAS_INT lda, const double *B,
                          const CBLAS_INT ldb, const double beta, double *C,
                          const CBLAS_INT ldc) {
-  if (f_cblas_dgemm)
+  if (*f_cblas_dgemm)
     (f_cblas_dgemm)(layout, TransA, TransB, M, N, K, alpha, A, lda, B, ldb,
                     beta, C, ldc);
 }
@@ -180,7 +180,7 @@ rocblas_status rocblas_cgemm(rocblas_handle handle, rocblas_operation transA,
                              const rocblas_float_complex *B, rocblas_int ldb,
                              const rocblas_float_complex *beta,
                              rocblas_float_complex *C, rocblas_int ldc) {
-  if (f_rocblas_cgemm)
+  if (*f_rocblas_cgemm)
     (*f_rocblas_cgemm)(handle, transA, transB, m, n, k, alpha, A, lda, B, ldb,
                        beta, C, ldc);
   return -1;
@@ -199,7 +199,7 @@ static void _cblas_cgemm(CBLAS_LAYOUT layout, CBLAS_TRANSPOSE TransA,
                          const void *alpha, const void *A, const CBLAS_INT lda,
                          const void *B, const CBLAS_INT ldb, const void *beta,
                          void *C, const CBLAS_INT ldc) {
-  if (f_cblas_cgemm)
+  if (*f_cblas_cgemm)
     (f_cblas_cgemm)(layout, TransA, TransB, M, N, K, alpha, A, lda, B, ldb,
                     beta, C, ldc);
 }
@@ -248,7 +248,7 @@ rocblas_status rocblas_zgemm(rocblas_handle handle, rocblas_operation transA,
                              const rocblas_double_complex *B, rocblas_int ldb,
                              const rocblas_double_complex *beta,
                              rocblas_double_complex *C, rocblas_int ldc) {
-  if (f_rocblas_zgemm)
+  if (*f_rocblas_zgemm)
     return (*f_rocblas_zgemm)(handle, transA, transB, m, n, k, alpha, A, lda, B,
                               ldb, beta, C, ldc);
   return -1;
@@ -267,7 +267,7 @@ static void _cblas_zgemm(CBLAS_LAYOUT layout, CBLAS_TRANSPOSE TransA,
                          const void *alpha, const void *A, const CBLAS_INT lda,
                          const void *B, const CBLAS_INT ldb, const void *beta,
                          void *C, const CBLAS_INT ldc) {
-  if (f_cblas_zgemm)
+  if (*f_cblas_zgemm)
     (f_cblas_zgemm)(layout, TransA, TransB, M, N, K, alpha, A, lda, B, ldb,
                     beta, C, ldc);
 }
