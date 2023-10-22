@@ -137,38 +137,39 @@ fail:
   _cblas_dger(layout, M, N, alpha, X, incX, Y, incY, A, lda);
 }
 
-extern rocblas_status (*f_rocblas_cgeru)(rocblas_handle handle, rocblas_int m,
-                                        rocblas_int n, const rocblas_float_complex *alpha,
-                                        const rocblas_float_complex *x, rocblas_int incx,
-                                        const rocblas_float_complex *y, rocblas_int incy,
-                                        rocblas_float_complex *A, rocblas_int lda);
-rocblas_status rocblas_cgeru(rocblas_handle handle, rocblas_int m, rocblas_int n,
-                            const rocblas_float_complex *alpha, const rocblas_float_complex *x,
-                            rocblas_int incx, const rocblas_float_complex *y, rocblas_int incy,
-                            rocblas_float_complex *A, rocblas_int lda) {
+extern rocblas_status (*f_rocblas_cgeru)(
+    rocblas_handle handle, rocblas_int m, rocblas_int n,
+    const rocblas_float_complex *alpha, const rocblas_float_complex *x,
+    rocblas_int incx, const rocblas_float_complex *y, rocblas_int incy,
+    rocblas_float_complex *A, rocblas_int lda);
+rocblas_status rocblas_cgeru(rocblas_handle handle, rocblas_int m,
+                             rocblas_int n, const rocblas_float_complex *alpha,
+                             const rocblas_float_complex *x, rocblas_int incx,
+                             const rocblas_float_complex *y, rocblas_int incy,
+                             rocblas_float_complex *A, rocblas_int lda) {
   if (*f_rocblas_cgeru)
     return (f_rocblas_cgeru)(handle, m, n, alpha, x, incx, y, incy, A, lda);
   return -1;
 }
 
 extern void (*f_cblas_cgeru)(CBLAS_LAYOUT layout, const CBLAS_INT M,
-                            const CBLAS_INT N, const void * alpha,
-                            const void *X, const CBLAS_INT incX,
-                            const void *Y, const CBLAS_INT incY, void *A,
-                            const CBLAS_INT lda);
+                             const CBLAS_INT N, const void *alpha,
+                             const void *X, const CBLAS_INT incX, const void *Y,
+                             const CBLAS_INT incY, void *A,
+                             const CBLAS_INT lda);
 
 static void _cblas_cgeru(CBLAS_LAYOUT layout, const CBLAS_INT M,
-                        const CBLAS_INT N, const void * alpha, const void *X,
-                        const CBLAS_INT incX, const void *Y,
-                        const CBLAS_INT incY, void *A, const CBLAS_INT lda) {
+                         const CBLAS_INT N, const void *alpha, const void *X,
+                         const CBLAS_INT incX, const void *Y,
+                         const CBLAS_INT incY, void *A, const CBLAS_INT lda) {
   if (*f_cblas_cgeru)
     (f_cblas_cgeru)(layout, M, N, alpha, X, incX, Y, incY, A, lda);
 }
 
 void cblas_cgeru(CBLAS_LAYOUT layout, const CBLAS_INT M, const CBLAS_INT N,
-                const void * alpha, const void *X, const CBLAS_INT incX,
-                const void *Y, const CBLAS_INT incY, void *A,
-                const CBLAS_INT lda) {
+                 const void *alpha, const void *X, const CBLAS_INT incX,
+                 const void *Y, const CBLAS_INT incY, void *A,
+                 const CBLAS_INT lda) {
 
   size_t size_a, size_b, size_c;
   int s;
@@ -196,38 +197,39 @@ fail:
   _cblas_cgeru(layout, M, N, alpha, X, incX, Y, incY, A, lda);
 }
 
-extern rocblas_status (*f_rocblas_zgeru)(rocblas_handle handle, rocblas_int m,
-                                        rocblas_int n, const rocblas_double_complex *alpha,
-                                        const rocblas_double_complex *x, rocblas_int incx,
-                                        const rocblas_double_complex *y, rocblas_int incy,
-                                        rocblas_double_complex *A, rocblas_int lda);
-rocblas_status rocblas_zgeru(rocblas_handle handle, rocblas_int m, rocblas_int n,
-                            const rocblas_double_complex *alpha, const rocblas_double_complex *x,
-                            rocblas_int incx, const rocblas_double_complex *y, rocblas_int incy,
-                            rocblas_double_complex *A, rocblas_int lda) {
+extern rocblas_status (*f_rocblas_zgeru)(
+    rocblas_handle handle, rocblas_int m, rocblas_int n,
+    const rocblas_double_complex *alpha, const rocblas_double_complex *x,
+    rocblas_int incx, const rocblas_double_complex *y, rocblas_int incy,
+    rocblas_double_complex *A, rocblas_int lda);
+rocblas_status rocblas_zgeru(rocblas_handle handle, rocblas_int m,
+                             rocblas_int n, const rocblas_double_complex *alpha,
+                             const rocblas_double_complex *x, rocblas_int incx,
+                             const rocblas_double_complex *y, rocblas_int incy,
+                             rocblas_double_complex *A, rocblas_int lda) {
   if (*f_rocblas_zgeru)
     return (f_rocblas_zgeru)(handle, m, n, alpha, x, incx, y, incy, A, lda);
   return -1;
 }
 
 extern void (*f_cblas_zgeru)(CBLAS_LAYOUT layout, const CBLAS_INT M,
-                            const CBLAS_INT N, const void * alpha,
-                            const void *X, const CBLAS_INT incX,
-                            const void *Y, const CBLAS_INT incY, void *A,
-                            const CBLAS_INT lda);
+                             const CBLAS_INT N, const void *alpha,
+                             const void *X, const CBLAS_INT incX, const void *Y,
+                             const CBLAS_INT incY, void *A,
+                             const CBLAS_INT lda);
 
 static void _cblas_zgeru(CBLAS_LAYOUT layout, const CBLAS_INT M,
-                        const CBLAS_INT N, const void * alpha, const void *X,
-                        const CBLAS_INT incX, const void *Y,
-                        const CBLAS_INT incY, void *A, const CBLAS_INT lda) {
+                         const CBLAS_INT N, const void *alpha, const void *X,
+                         const CBLAS_INT incX, const void *Y,
+                         const CBLAS_INT incY, void *A, const CBLAS_INT lda) {
   if (*f_cblas_zgeru)
     (f_cblas_zgeru)(layout, M, N, alpha, X, incX, Y, incY, A, lda);
 }
 
 void cblas_zgeru(CBLAS_LAYOUT layout, const CBLAS_INT M, const CBLAS_INT N,
-                const void * alpha, const void *X, const CBLAS_INT incX,
-                const void *Y, const CBLAS_INT incY, void *A,
-                const CBLAS_INT lda) {
+                 const void *alpha, const void *X, const CBLAS_INT incX,
+                 const void *Y, const CBLAS_INT incY, void *A,
+                 const CBLAS_INT lda) {
 
   size_t size_a, size_b, size_c;
   int s;
@@ -254,4 +256,3 @@ void cblas_zgeru(CBLAS_LAYOUT layout, const CBLAS_INT M, const CBLAS_INT N,
 fail:
   _cblas_zgeru(layout, M, N, alpha, X, incX, Y, incY, A, lda);
 }
-

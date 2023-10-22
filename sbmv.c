@@ -31,7 +31,7 @@ rocblas_status rocblas_ssbmv(rocblas_handle handle, rocblas_fill uplo,
                              const float *A, rocblas_int lda, const float *x,
                              rocblas_int incx, const float *beta, float *y,
                              rocblas_int incy) {
-  if (f_rocblas_ssbmv)
+  if (*f_rocblas_ssbmv)
     return (f_rocblas_ssbmv)(handle, uplo, n, k, alpha, A, lda, x, incx, beta,
                              y, incy);
   return -1;
@@ -48,7 +48,7 @@ static void _cblas_ssbmv(CBLAS_LAYOUT layout, CBLAS_UPLO Uplo,
                          const float alpha, const float *A, const CBLAS_INT lda,
                          const float *X, const CBLAS_INT incX, const float beta,
                          float *Y, const CBLAS_INT incY) {
-  if (f_cblas_ssbmv)
+  if (*f_cblas_ssbmv)
     (f_cblas_ssbmv)(layout, Uplo, N, K, alpha, A, lda, X, incX, beta, Y, incY);
 }
 void cblas_ssbmv(CBLAS_LAYOUT layout, CBLAS_UPLO Uplo, const CBLAS_INT N,
@@ -87,7 +87,7 @@ rocblas_status rocblas_dsbmv(rocblas_handle handle, rocblas_fill uplo,
                              const double *A, rocblas_int lda, const double *x,
                              rocblas_int incx, const double *beta, double *y,
                              rocblas_int incy) {
-  if (f_rocblas_dsbmv)
+  if (*f_rocblas_dsbmv)
     return (f_rocblas_dsbmv)(handle, uplo, n, k, alpha, A, lda, x, incx, beta,
                              y, incy);
   return -1;
@@ -105,7 +105,7 @@ static void _cblas_dsbmv(CBLAS_LAYOUT layout, CBLAS_UPLO Uplo,
                          const CBLAS_INT lda, const double *X,
                          const CBLAS_INT incX, const double beta, double *Y,
                          const CBLAS_INT incY) {
-  if (f_cblas_dsbmv)
+  if (*f_cblas_dsbmv)
     (f_cblas_dsbmv)(layout, Uplo, N, K, alpha, A, lda, X, incX, beta, Y, incY);
 }
 void cblas_dsbmv(CBLAS_LAYOUT layout, CBLAS_UPLO Uplo, const CBLAS_INT N,
@@ -148,7 +148,7 @@ rocblas_status rocblas_csbmv(rocblas_handle handle, rocblas_fill uplo,
                              const rocblas_float_complex *x, rocblas_int incx,
                              const rocblas_float_complex *beta,
                              rocblas_float_complex *y, rocblas_int incy) {
-  if (f_rocblas_csbmv)
+  if (*f_rocblas_csbmv)
     return (f_rocblas_csbmv)(handle, uplo, n, k, alpha, A, lda, x, incx, beta,
                              y, incy);
   return -1;
@@ -165,7 +165,7 @@ static void _cblas_csbmv(CBLAS_LAYOUT layout, CBLAS_UPLO Uplo,
                          const void *alpha, const void *A, const CBLAS_INT lda,
                          const void *X, const CBLAS_INT incX, const void *beta,
                          void *Y, const CBLAS_INT incY) {
-  if (f_cblas_csbmv)
+  if (*f_cblas_csbmv)
     (f_cblas_csbmv)(layout, Uplo, N, K, alpha, A, lda, X, incX, beta, Y, incY);
 }
 void cblas_csbmv(CBLAS_LAYOUT layout, CBLAS_UPLO Uplo, const CBLAS_INT N,
@@ -208,7 +208,7 @@ rocblas_status rocblas_zsbmv(rocblas_handle handle, rocblas_fill uplo,
                              const rocblas_double_complex *x, rocblas_int incx,
                              const rocblas_double_complex *beta,
                              rocblas_double_complex *y, rocblas_int incy) {
-  if (f_rocblas_zsbmv)
+  if (*f_rocblas_zsbmv)
     return (f_rocblas_zsbmv)(handle, uplo, n, k, alpha, A, lda, x, incx, beta,
                              y, incy);
   return -1;
@@ -225,7 +225,7 @@ static void _cblas_zsbmv(CBLAS_LAYOUT layout, CBLAS_UPLO Uplo,
                          const void *alpha, const void *A, const CBLAS_INT lda,
                          const void *X, const CBLAS_INT incX, const void *beta,
                          void *Y, const CBLAS_INT incY) {
-  if (f_cblas_zsbmv)
+  if (*f_cblas_zsbmv)
     (f_cblas_zsbmv)(layout, Uplo, N, K, alpha, A, lda, X, incX, beta, Y, incY);
 }
 void cblas_zsbmv(CBLAS_LAYOUT layout, CBLAS_UPLO Uplo, const CBLAS_INT N,
