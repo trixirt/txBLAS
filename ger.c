@@ -256,3 +256,123 @@ void cblas_zgeru(CBLAS_LAYOUT layout, const CBLAS_INT M, const CBLAS_INT N,
 fail:
   _cblas_zgeru(layout, M, N, alpha, X, incX, Y, incY, A, lda);
 }
+
+extern rocblas_status (*f_rocblas_cgerc)(
+    rocblas_handle handle, rocblas_int m, rocblas_int n,
+    const rocblas_float_complex *alpha, const rocblas_float_complex *x,
+    rocblas_int incx, const rocblas_float_complex *y, rocblas_int incy,
+    rocblas_float_complex *A, rocblas_int lda);
+rocblas_status rocblas_cgerc(rocblas_handle handle, rocblas_int m,
+                             rocblas_int n, const rocblas_float_complex *alpha,
+                             const rocblas_float_complex *x, rocblas_int incx,
+                             const rocblas_float_complex *y, rocblas_int incy,
+                             rocblas_float_complex *A, rocblas_int lda) {
+  if (*f_rocblas_cgerc)
+    return (f_rocblas_cgerc)(handle, m, n, alpha, x, incx, y, incy, A, lda);
+  return -1;
+}
+
+extern void (*f_cblas_cgerc)(CBLAS_LAYOUT layout, const CBLAS_INT M,
+                             const CBLAS_INT N, const void *alpha,
+                             const void *X, const CBLAS_INT incX, const void *Y,
+                             const CBLAS_INT incY, void *A,
+                             const CBLAS_INT lda);
+
+static void _cblas_cgerc(CBLAS_LAYOUT layout, const CBLAS_INT M,
+                         const CBLAS_INT N, const void *alpha, const void *X,
+                         const CBLAS_INT incX, const void *Y,
+                         const CBLAS_INT incY, void *A, const CBLAS_INT lda) {
+  if (*f_cblas_cgerc)
+    (f_cblas_cgerc)(layout, M, N, alpha, X, incX, Y, incY, A, lda);
+}
+
+void cblas_cgerc(CBLAS_LAYOUT layout, const CBLAS_INT M, const CBLAS_INT N,
+                 const void *alpha, const void *X, const CBLAS_INT incX,
+                 const void *Y, const CBLAS_INT incY, void *A,
+                 const CBLAS_INT lda) {
+
+  size_t size_a, size_b, size_c;
+  int s;
+  if (layout == CblasColMajor)
+    s = size_ger(M, N, incX, incY, lda, &size_a, &size_b, &size_c);
+  else
+    s = size_ger(N, M, incY, incX, lda, &size_a, &size_b, &size_c);
+
+  if (s)
+    goto fail;
+
+  hipMemcpy(__A, X, 2 * sizeof(float) * size_a, hipMemcpyHostToDevice);
+  hipMemcpy(__B, Y, 2 * sizeof(float) * size_b, hipMemcpyHostToDevice);
+  hipMemcpy(__C, A, 2 * sizeof(float) * size_c, hipMemcpyHostToDevice);
+
+  if (layout == CblasColMajor)
+    rocblas_cgerc(__handle, M, N, alpha, __A, incX, __B, incY, __C, lda);
+  else
+    rocblas_cgerc(__handle, N, M, alpha, __B, incY, __A, incX, __C, lda);
+
+  hipMemcpy(A, __C, 2 * sizeof(float) * size_c, hipMemcpyDeviceToHost);
+
+  return;
+fail:
+  _cblas_cgerc(layout, M, N, alpha, X, incX, Y, incY, A, lda);
+}
+
+extern rocblas_status (*f_rocblas_zgerc)(
+    rocblas_handle handle, rocblas_int m, rocblas_int n,
+    const rocblas_double_complex *alpha, const rocblas_double_complex *x,
+    rocblas_int incx, const rocblas_double_complex *y, rocblas_int incy,
+    rocblas_double_complex *A, rocblas_int lda);
+rocblas_status rocblas_zgerc(rocblas_handle handle, rocblas_int m,
+                             rocblas_int n, const rocblas_double_complex *alpha,
+                             const rocblas_double_complex *x, rocblas_int incx,
+                             const rocblas_double_complex *y, rocblas_int incy,
+                             rocblas_double_complex *A, rocblas_int lda) {
+  if (*f_rocblas_zgerc)
+    return (f_rocblas_zgerc)(handle, m, n, alpha, x, incx, y, incy, A, lda);
+  return -1;
+}
+
+extern void (*f_cblas_zgerc)(CBLAS_LAYOUT layout, const CBLAS_INT M,
+                             const CBLAS_INT N, const void *alpha,
+                             const void *X, const CBLAS_INT incX, const void *Y,
+                             const CBLAS_INT incY, void *A,
+                             const CBLAS_INT lda);
+
+static void _cblas_zgerc(CBLAS_LAYOUT layout, const CBLAS_INT M,
+                         const CBLAS_INT N, const void *alpha, const void *X,
+                         const CBLAS_INT incX, const void *Y,
+                         const CBLAS_INT incY, void *A, const CBLAS_INT lda) {
+  if (*f_cblas_zgerc)
+    (f_cblas_zgerc)(layout, M, N, alpha, X, incX, Y, incY, A, lda);
+}
+
+void cblas_zgerc(CBLAS_LAYOUT layout, const CBLAS_INT M, const CBLAS_INT N,
+                 const void *alpha, const void *X, const CBLAS_INT incX,
+                 const void *Y, const CBLAS_INT incY, void *A,
+                 const CBLAS_INT lda) {
+
+  size_t size_a, size_b, size_c;
+  int s;
+  if (layout == CblasColMajor)
+    s = size_ger(M, N, incX, incY, lda, &size_a, &size_b, &size_c);
+  else
+    s = size_ger(N, M, incY, incX, lda, &size_a, &size_b, &size_c);
+
+  if (s)
+    goto fail;
+
+  hipMemcpy(__A, X, 2 * sizeof(double) * size_a, hipMemcpyHostToDevice);
+  hipMemcpy(__B, Y, 2 * sizeof(double) * size_b, hipMemcpyHostToDevice);
+  hipMemcpy(__C, A, 2 * sizeof(double) * size_c, hipMemcpyHostToDevice);
+
+  if (layout == CblasColMajor)
+    rocblas_zgerc(__handle, M, N, alpha, __A, incX, __B, incY, __C, lda);
+  else
+    rocblas_zgerc(__handle, N, M, alpha, __B, incY, __A, incX, __C, lda);
+
+  hipMemcpy(A, __C, 2 * sizeof(double) * size_c, hipMemcpyDeviceToHost);
+
+  return;
+fail:
+  _cblas_zgerc(layout, M, N, alpha, X, incX, Y, incY, A, lda);
+}

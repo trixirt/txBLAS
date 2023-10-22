@@ -108,4 +108,3 @@ void cblas_dsyr(CBLAS_LAYOUT layout, CBLAS_UPLO Uplo, const CBLAS_INT N,
 fail:
   _cblas_dsyr(layout, Uplo, N, alpha, X, incX, A, lda);
 }
-
