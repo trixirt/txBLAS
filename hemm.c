@@ -39,7 +39,7 @@ rocblas_status rocblas_chemm(rocblas_handle handle, rocblas_side side,
                              const rocblas_float_complex *B, rocblas_int ldb,
                              const rocblas_float_complex *beta,
                              rocblas_float_complex *C, rocblas_int ldc) {
-  if (f_rocblas_chemm)
+  if (*f_rocblas_chemm)
     return (f_rocblas_chemm)(handle, side, uplo, m, n, alpha, A, lda, B, ldb,
                              beta, C, ldc);
   return -1;
@@ -56,7 +56,7 @@ static void _cblas_chemm(CBLAS_LAYOUT layout, CBLAS_SIDE Side, CBLAS_UPLO Uplo,
                          const void *alpha, const void *A, const CBLAS_INT lda,
                          const void *B, const CBLAS_INT ldb, const void *beta,
                          void *C, const CBLAS_INT ldc) {
-  if (f_cblas_chemm)
+  if (*f_cblas_chemm)
     (f_cblas_chemm)(layout, Side, Uplo, M, N, alpha, A, lda, B, ldb, beta, C,
                     ldc);
 }
@@ -107,7 +107,7 @@ rocblas_status rocblas_zhemm(rocblas_handle handle, rocblas_side side,
                              const rocblas_double_complex *B, rocblas_int ldb,
                              const rocblas_double_complex *beta,
                              rocblas_double_complex *C, rocblas_int ldc) {
-  if (f_rocblas_zhemm)
+  if (*f_rocblas_zhemm)
     return (f_rocblas_zhemm)(handle, side, uplo, m, n, alpha, A, lda, B, ldb,
                              beta, C, ldc);
   return -1;
@@ -124,7 +124,7 @@ static void _cblas_zhemm(CBLAS_LAYOUT layout, CBLAS_SIDE Side, CBLAS_UPLO Uplo,
                          const void *alpha, const void *A, const CBLAS_INT lda,
                          const void *B, const CBLAS_INT ldb, const void *beta,
                          void *C, const CBLAS_INT ldc) {
-  if (f_cblas_zhemm)
+  if (*f_cblas_zhemm)
     (f_cblas_zhemm)(layout, Side, Uplo, M, N, alpha, A, lda, B, ldb, beta, C,
                     ldc);
 }
