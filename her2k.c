@@ -41,7 +41,7 @@ rocblas_status rocblas_cher2k(rocblas_handle handle, rocblas_fill uplo,
                               const rocblas_float_complex *B, rocblas_int ldb,
                               const float *beta, rocblas_float_complex *C,
                               rocblas_int ldc) {
-  if (f_rocblas_cher2k)
+  if (*f_rocblas_cher2k)
     return (f_rocblas_cher2k)(handle, uplo, trans, n, k, alpha, A, lda, B, ldb,
                               beta, C, ldc);
   return -1;
@@ -60,7 +60,7 @@ static void _cblas_cher2k(CBLAS_LAYOUT layout, CBLAS_UPLO Uplo,
                           const CBLAS_INT lda, const void *B,
                           const CBLAS_INT ldb, const float beta, void *C,
                           const CBLAS_INT ldc) {
-  if (f_cblas_cher2k)
+  if (*f_cblas_cher2k)
     (f_cblas_cher2k)(layout, Uplo, Trans, N, K, alpha, A, lda, B, ldb, beta, C,
                      ldc);
 }
@@ -108,7 +108,7 @@ rocblas_status rocblas_zher2k(rocblas_handle handle, rocblas_fill uplo,
                               const rocblas_double_complex *B, rocblas_int ldb,
                               const double *beta, rocblas_double_complex *C,
                               rocblas_int ldc) {
-  if (f_rocblas_zher2k)
+  if (*f_rocblas_zher2k)
     return (f_rocblas_zher2k)(handle, uplo, trans, n, k, alpha, A, lda, B, ldb,
                               beta, C, ldc);
   return -1;
@@ -127,7 +127,7 @@ static void _cblas_zher2k(CBLAS_LAYOUT layout, CBLAS_UPLO Uplo,
                           const CBLAS_INT lda, const void *B,
                           const CBLAS_INT ldb, const double beta, void *C,
                           const CBLAS_INT ldc) {
-  if (f_cblas_zher2k)
+  if (*f_cblas_zher2k)
     (f_cblas_zher2k)(layout, Uplo, Trans, N, K, alpha, A, lda, B, ldb, beta, C,
                      ldc);
 }
