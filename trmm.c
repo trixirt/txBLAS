@@ -35,7 +35,7 @@ rocblas_status rocblas_strmm(rocblas_handle handle, rocblas_side side,
                              rocblas_diagonal diag, rocblas_int m,
                              rocblas_int n, const float *alpha, const float *A,
                              rocblas_int lda, float *B, rocblas_int ldb) {
-  if (f_rocblas_strmm)
+  if (*f_rocblas_strmm)
     return rocblas_strmm(handle, side, uplo, transA, diag, m, n, alpha, A, lda,
                          B, ldb);
   return -1;
@@ -53,7 +53,7 @@ static void _cblas_strmm(CBLAS_LAYOUT layout, CBLAS_SIDE Side, CBLAS_UPLO Uplo,
                          const CBLAS_INT M, const CBLAS_INT N,
                          const float alpha, const float *A, const CBLAS_INT lda,
                          float *B, const CBLAS_INT ldb) {
-  if (f_cblas_strmm)
+  if (*f_cblas_strmm)
     (f_cblas_strmm)(layout, Side, Uplo, TransA, Diag, M, N, alpha, A, lda, B,
                     ldb);
 }
@@ -106,7 +106,7 @@ rocblas_status rocblas_dtrmm(rocblas_handle handle, rocblas_side side,
                              rocblas_int n, const double *alpha,
                              const double *A, rocblas_int lda, double *B,
                              rocblas_int ldb) {
-  if (f_rocblas_dtrmm)
+  if (*f_rocblas_dtrmm)
     return rocblas_dtrmm(handle, side, uplo, transA, diag, m, n, alpha, A, lda,
                          B, ldb);
   return -1;
@@ -124,7 +124,7 @@ static void _cblas_dtrmm(CBLAS_LAYOUT layout, CBLAS_SIDE Side, CBLAS_UPLO Uplo,
                          const CBLAS_INT M, const CBLAS_INT N,
                          const double alpha, const double *A,
                          const CBLAS_INT lda, double *B, const CBLAS_INT ldb) {
-  if (f_cblas_dtrmm)
+  if (*f_cblas_dtrmm)
     (f_cblas_dtrmm)(layout, Side, Uplo, TransA, Diag, M, N, alpha, A, lda, B,
                     ldb);
 }
@@ -176,7 +176,7 @@ rocblas_status rocblas_ctrmm(rocblas_handle handle, rocblas_side side,
                              rocblas_int n, const rocblas_float_complex *alpha,
                              const rocblas_float_complex *A, rocblas_int lda,
                              rocblas_float_complex *B, rocblas_int ldb) {
-  if (f_rocblas_ctrmm)
+  if (*f_rocblas_ctrmm)
     return rocblas_ctrmm(handle, side, uplo, transA, diag, m, n, alpha, A, lda,
                          B, ldb);
   return -1;
@@ -194,7 +194,7 @@ static void _cblas_ctrmm(CBLAS_LAYOUT layout, CBLAS_SIDE Side, CBLAS_UPLO Uplo,
                          const CBLAS_INT M, const CBLAS_INT N,
                          const void *alpha, const void *A, const CBLAS_INT lda,
                          void *B, const CBLAS_INT ldb) {
-  if (f_cblas_ctrmm)
+  if (*f_cblas_ctrmm)
     (f_cblas_ctrmm)(layout, Side, Uplo, TransA, Diag, M, N, alpha, A, lda, B,
                     ldb);
 }
@@ -246,7 +246,7 @@ rocblas_status rocblas_ztrmm(rocblas_handle handle, rocblas_side side,
                              rocblas_int n, const rocblas_double_complex *alpha,
                              const rocblas_double_complex *A, rocblas_int lda,
                              rocblas_double_complex *B, rocblas_int ldb) {
-  if (f_rocblas_ztrmm)
+  if (*f_rocblas_ztrmm)
     return rocblas_ztrmm(handle, side, uplo, transA, diag, m, n, alpha, A, lda,
                          B, ldb);
   return -1;
@@ -264,7 +264,7 @@ static void _cblas_ztrmm(CBLAS_LAYOUT layout, CBLAS_SIDE Side, CBLAS_UPLO Uplo,
                          const CBLAS_INT M, const CBLAS_INT N,
                          const void *alpha, const void *A, const CBLAS_INT lda,
                          void *B, const CBLAS_INT ldb) {
-  if (f_cblas_ztrmm)
+  if (*f_cblas_ztrmm)
     (f_cblas_ztrmm)(layout, Side, Uplo, TransA, Diag, M, N, alpha, A, lda, B,
                     ldb);
 }
